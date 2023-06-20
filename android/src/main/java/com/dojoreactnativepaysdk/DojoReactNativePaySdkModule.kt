@@ -2,7 +2,6 @@ package com.dojoreactnativepaysdk
 
 import com.facebook.react.bridge.*
 import tech.dojo.pay.sdk.DojoPaymentResult
-import tech.dojo.pay.sdk.DojoSdk
 import tech.dojo.pay.sdk.card.entities.DojoGPayConfig
 import tech.dojo.pay.sdk.card.entities.DojoSDKDebugConfig
 import tech.dojo.pay.sdk.card.entities.DojoSDKURLConfig
@@ -26,6 +25,9 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     val gPayGatewayMerchantId = details.getString(GOOGLE_PAY_GATEWAY_MERCHANT_ID)
     val forceLightMode = if (details.hasKey(FORCE_LIGHT_MODE)) details.getBoolean(FORCE_LIGHT_MODE) else false
     val isProduction = if (details.hasKey(IS_PRODUCTION)) details.getBoolean(IS_PRODUCTION) else true
+    val showBranding =
+      if (details.hasKey(SHOW_BRANDING)) details.getBoolean(SHOW_BRANDING) else true
+    val mustCompleteBy = details.getString(MUST_COMPLETE_BY)
 
     val gPayConfig = if (
       gPayMerchantId !== null &&
@@ -38,12 +40,12 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     ) else null
 
     if (intentId.isNullOrEmpty()) {
-      promise.resolve(DojoPaymentResult.INVALID_REQUEST)
+      promise.resolve(DojoPaymentResult.INVALID_REQUEST.code)
       return
     }
 
-    if (DojoPay.dojoPayUI == null) {
-      promise.resolve(DojoPaymentResult.SDK_INTERNAL_ERROR)
+    if (DojoPay.UIHandler == null) {
+      promise.resolve(DojoPaymentResult.SDK_INTERNAL_ERROR.code)
       return
     }
 
@@ -59,11 +61,15 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     ) else null
 
     DojoSDKDropInUI.dojoSDKDebugConfig = debugConfig
-    DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(forceLightMode = forceLightMode)
+    DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(forceLightMode = forceLightMode, showBranding = showBranding)
+
+    if (mustCompleteBy != null) {
+      DojoPay.startExpiryTimer(mustCompleteBy, reactApplicationContext)
+    }
 
     DojoPay.activePromise = promise
 
-    DojoPay.dojoPayUI?.startPaymentFlow(
+    DojoPay.UIHandler?.startPaymentFlow(
       DojoPaymentFlowParams(
         paymentId = intentId,
         clientSecret = customerSecret,
@@ -81,5 +87,7 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     const val GOOGLE_PAY_MERCHANT_ID = "gPayMerchantId"
     const val GOOGLE_PAY_GATEWAY_MERCHANT_ID = "gPayGatewayMerchantId"
     const val GOOGLE_PAY_MERCHANT_NAME = "gPayMerchantName"
+    const val SHOW_BRANDING = "showBranding"
+    const val MUST_COMPLETE_BY = "mustCompleteBy"
   }
 }

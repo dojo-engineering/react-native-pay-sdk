@@ -42,6 +42,7 @@ export type PaymentDetails = {
   /**
    * Should the payment UI use dark theme
    *
+   * @default false
    * iOS only
    */
   darkTheme?: boolean;
@@ -49,6 +50,7 @@ export type PaymentDetails = {
   /**
    * Should the payment UI use light theme
    *
+   * @default false
    * Android only
    */
   forceLightMode?: boolean;
@@ -73,6 +75,19 @@ export type PaymentDetails = {
    * Android only
    */
   gPayMerchantName?: string;
+
+  /**
+   * Show Dojo branding
+   *
+   * @default true
+   */
+  showBranding?: boolean;
+
+  /**
+   * ISO formatted datetime which represents a time after which
+   * the user will not be allowed to complete the payment
+   */
+  mustCompleteBy?: string;
 };
 
 export interface Spec extends TurboModule {

@@ -11,8 +11,6 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
 RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
                  : (NSDictionary*)details resolve
                  : (RCTPromiseResolveBlock)resolve reject
@@ -27,6 +25,7 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
     NSString *customerSecret = details[@"customerSecret"];
     NSNumber *darkTheme = details[@"darkTheme"];
     NSNumber *isProduction = details[@"isProduction"];
+    NSNumber *showBranding = details[@"showBranding"];
     
     DojoUIApplePayConfig *applePayConfig = nil;
     if (applePayMerchantId != nil) {
@@ -54,6 +53,10 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
         theme = [DojoThemeSettings getDarkTheme];
     } else {
         theme = [DojoThemeSettings getLightTheme];
+    }
+    
+    if (showBranding.boolValue == false) {
+        [theme setShowBranding:@false];
     }
     
     [dojoUI startPaymentFlowWithPaymentIntentId:intentId
