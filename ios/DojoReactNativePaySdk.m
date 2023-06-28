@@ -1,5 +1,6 @@
 #import "DojoReactNativePaySdk.h"
 #import <React/RCTUtils.h>
+@import dojo_ios_sdk;
 @import dojo_ios_sdk_drop_in_ui;
 
 @implementation DojoReactNativePaySdk
@@ -41,6 +42,8 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
                                         initWithUrlConfig:urlConfig
                                         isSandboxIntent:!useProduction
                                         isSandboxWallet:!useProduction];
+    
+    
     DojoThemeSettings *theme;
     if (darkTheme != nil && darkTheme.boolValue == true) {
         theme = [DojoThemeSettings getDarkTheme];

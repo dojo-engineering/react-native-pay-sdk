@@ -4,7 +4,7 @@ PODS:
   - dojo-ios-sdk (1.2.1)
   - dojo-ios-sdk-drop-in-ui (1.2.1):
     - dojo-ios-sdk (= 1.2.1)
-  - dojo-react-native-pay-sdk (0.5.0):
+  - dojo-react-native-pay-sdk (0.6.0):
     - dojo-ios-sdk (= 1.2.1)
     - dojo-ios-sdk-drop-in-ui (= 1.2.1)
     - React-Core
@@ -598,7 +598,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   dojo-ios-sdk: a7d4068ec2c09b510f32576c5fe7a81344852031
   dojo-ios-sdk-drop-in-ui: 3aeb700befcc4973b1d55005c17fabbbee18a311
-  dojo-react-native-pay-sdk: 82c21972d55fe4f24c3f644f16683c6559aae1fc
+  dojo-react-native-pay-sdk: 5836c71e641edc9893ea6b8452f054ba29245bae
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: 60195509584153283780abdac5569feffb8f08cc
   FBReactNativeSpec: 9c191fb58d06dc05ab5559a5505fc32139e9e4a2
