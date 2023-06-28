@@ -25,7 +25,7 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     val gPayMerchantName = details.getString(GOOGLE_PAY_MERCHANT_NAME)
     val gPayGatewayMerchantId = details.getString(GOOGLE_PAY_GATEWAY_MERCHANT_ID)
     val forceLightMode = if (details.hasKey(FORCE_LIGHT_MODE)) details.getBoolean(FORCE_LIGHT_MODE) else false
-    val isProduction = if (details.hasKey(FORCE_LIGHT_MODE)) details.getBoolean(IS_PRODUCTION) else true
+    val isProduction = if (details.hasKey(IS_PRODUCTION)) details.getBoolean(IS_PRODUCTION) else true
 
     val gPayConfig = if (
       gPayMerchantId !== null &&

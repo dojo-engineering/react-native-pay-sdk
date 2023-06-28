@@ -10,6 +10,7 @@ export default function App() {
   const pay = () => {
     startPaymentFlow({
       intentId: token,
+      isProduction: false
     }).then((res) => {
       setResult(res);
     });
