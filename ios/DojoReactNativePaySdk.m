@@ -16,35 +16,44 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
                  : (NSDictionary*)details resolve
                  : (RCTPromiseResolveBlock)resolve reject
                  : (RCTPromiseRejectBlock)reject) {
-    
+
     DojoSDKDropInUI *dojoUI = [[DojoSDKDropInUI alloc] init];
-    
+
     UIViewController *vc = RCTPresentedViewController();
-    
+
     NSString *applePayMerchantId = details[@"applePayMerchantId"];
     NSString *intentId = details[@"intentId"];
     NSString *customerSecret = details[@"customerSecret"];
     NSNumber *darkTheme = details[@"darkTheme"];
-    
+    NSNumber *isProduction = details[@"isProduction"];
+
     DojoUIApplePayConfig *applePayConfig = nil;
     if (applePayMerchantId != nil) {
         applePayConfig = [[DojoUIApplePayConfig alloc]
                           initWithMerchantIdentifier:applePayMerchantId];
     }
-    
+
+    BOOL useProduction = isProduction == nil || isProduction.boolValue == true;
+    DojoSDKURLConfig *urlConfig = [[DojoSDKURLConfig alloc]
+                                    initWithConnectE:useProduction ? nil : @"https://web.e.test.connect.paymentsense.cloud"
+                                    remote:useProduction ? nil : @"https://staging-api.dojo.dev/master"];
+    DojoSDKDebugConfig *debugConfig = [[DojoSDKDebugConfig alloc]
+                                        initWithUrlConfig:urlConfig
+                                        isSandboxIntent:!useProduction
+                                        isSandboxWallet:!useProduction];
     DojoThemeSettings *theme;
-    if (darkTheme.boolValue == true) {
+    if (darkTheme != nil && darkTheme.boolValue == true) {
         theme = [DojoThemeSettings getDarkTheme];
     } else {
         theme = [DojoThemeSettings getLightTheme];
     }
-    
+
     [dojoUI startPaymentFlowWithPaymentIntentId:intentId
                                      controller:vc
                                  customerSecret:customerSecret
                                  applePayConfig:applePayConfig
                                   themeSettings:theme
-                                    debugConfig:nil
+                                    debugConfig:debugConfig
                                      completion:^(NSInteger result) {
         NSLog(@"%ld", (long)result);
         resolve(@(result));

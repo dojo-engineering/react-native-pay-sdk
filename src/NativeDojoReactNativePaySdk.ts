@@ -28,6 +28,11 @@ export type PaymentDetails = {
   customerSecret?: string;
 
   /**
+   * Is production - sets up SDK appropriately
+   */
+  isProduction?: boolean;
+
+  /**
    * Apple pay merchant ID
    *
    * iOS only

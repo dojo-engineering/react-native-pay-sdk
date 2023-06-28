@@ -23,6 +23,7 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     val gPayMerchantName = details.getString(GOOGLE_PAY_MERCHANT_NAME)
     val gPayGatewayMerchantId = details.getString(GOOGLE_PAY_GATEWAY_MERCHANT_ID)
     val forceLightMode = if (details.hasKey(FORCE_LIGHT_MODE)) details.getBoolean(FORCE_LIGHT_MODE) else false
+    val isProduction = if (details.hasKey(FORCE_LIGHT_MODE)) details.getBoolean(IS_PRODUCTION) else true
 
     val gPayConfig = if (
       gPayMerchantId !== null &&
@@ -44,6 +45,12 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
       return
     }
 
+    val urlConfig = DojoSDKURLConfig(
+      if (!isProduction) "https://web.e.test.connect.paymentsense.cloud" else null,
+      if (!isProduction) "https://staging-api.dojo.dev/master" else null,
+    )
+
+    DojoSdk.dojoSDKDebugConfig = DojoSDKDebugConfig(urlConfig, !isProduction, !isProduction)
     DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(forceLightMode = forceLightMode)
 
     DojoPay.activePromise = promise
@@ -61,6 +68,7 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     const val NAME = "DojoReactNativePaySdk"
     const val INTENT_ID = "intentId"
     const val CUSTOMER_SECRET = "customerSecret"
+    const val IS_PRODUCTION = "isProduction"
     const val FORCE_LIGHT_MODE = "forceLightMode"
     const val GOOGLE_PAY_MERCHANT_ID = "gPayMerchantId"
     const val GOOGLE_PAY_GATEWAY_MERCHANT_ID = "gPayGatewayMerchantId"
