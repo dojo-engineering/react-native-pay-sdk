@@ -47,13 +47,22 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
       return
     }
 
-    val urlConfig = DojoSDKURLConfig(
-      if (!isProduction) "https://web.e.test.connect.paymentsense.cloud/" else null,
-      if (!isProduction) "https://staging-api.dojo.dev/master/" else null,
-    )
+    val urlConfig = if (!isProduction) DojoSDKURLConfig(
+      "https://web.e.test.connect.paymentsense.cloud/",
+      "https://staging-api.dojo.dev/master/",
+    ) else null
 
-    DojoSdk.dojoSDKDebugConfig = DojoSDKDebugConfig(urlConfig, !isProduction, !isProduction)
-    DojoSDKDropInUI.dojoSDKDebugConfig = DojoSDKDebugConfig(urlConfig, !isProduction, !isProduction)
+    var debugConfig = if (!isProduction) DojoSDKDebugConfig(
+      urlConfig,
+      true,
+      true
+    ) else null
+
+    if (debugConfig != null) {
+      DojoSdk.dojoSDKDebugConfig = debugConfig
+    }
+
+    DojoSDKDropInUI.dojoSDKDebugConfig = debugConfig
     DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(forceLightMode = forceLightMode)
 
     DojoPay.activePromise = promise
