@@ -58,10 +58,6 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
       true
     ) else null
 
-    if (debugConfig != null) {
-      DojoSdk.dojoSDKDebugConfig = debugConfig
-    }
-
     DojoSDKDropInUI.dojoSDKDebugConfig = debugConfig
     DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(forceLightMode = forceLightMode)
 
