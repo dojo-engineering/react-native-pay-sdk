@@ -11,14 +11,16 @@ RCT_EXPORT_MODULE()
     return dispatch_get_main_queue();
 }
 
+int EXPIRED_RESULT_CODE = 40;
+
 RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
                  : (NSDictionary*)details resolve
                  : (RCTPromiseResolveBlock)resolve reject
                  : (RCTPromiseRejectBlock)reject) {
     
     DojoSDKDropInUI *dojoUI = [[DojoSDKDropInUI alloc] init];
-    
     UIViewController *vc = RCTPresentedViewController();
+    NSTimer *expiryTimer = nil;
     
     NSString *applePayMerchantId = details[@"applePayMerchantId"];
     NSString *intentId = details[@"intentId"];
@@ -26,6 +28,7 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
     NSNumber *darkTheme = details[@"darkTheme"];
     NSNumber *isProduction = details[@"isProduction"];
     NSNumber *showBranding = details[@"showBranding"];
+    NSString *mustCompleteBy = details[@"mustCompleteBy"];
     
     DojoUIApplePayConfig *applePayConfig = nil;
     if (applePayMerchantId != nil) {
@@ -59,6 +62,22 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
         [theme setShowBranding:@false];
     }
     
+    if (mustCompleteBy != nil) {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+        NSDate *date = [dateFormatter dateFromString:mustCompleteBy];
+        
+        expiryTimer = [[NSTimer alloc] initWithFireDate:date interval:0 repeats:false block:^(NSTimer * _Nonnull timer) {
+            if (expiryTimer != nil) {
+                [expiryTimer invalidate];
+            }
+            [vc dismissViewControllerAnimated:YES completion:nil];
+            resolve(@(EXPIRED_RESULT_CODE));
+        }];
+        
+        [[NSRunLoop mainRunLoop] addTimer: expiryTimer forMode:NSDefaultRunLoopMode];
+    }
+    
     [dojoUI startPaymentFlowWithPaymentIntentId:intentId
                                      controller:vc
                                  customerSecret:customerSecret
@@ -66,7 +85,9 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
                                   themeSettings:theme
                                     debugConfig:debugConfig
                                      completion:^(NSInteger result) {
-        NSLog(@"%ld", (long)result);
+        if (expiryTimer != nil) {
+            [expiryTimer invalidate];
+        }
         resolve(@(result));
     }];
 }

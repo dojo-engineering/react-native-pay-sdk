@@ -8,6 +8,7 @@ export enum ResultCode {
   declined = 5,
   duplicateTransaction = 20,
   failed = 30,
+  expired = 40,
   waitingPreExecute = 99,
   invalidRequest = 400,
   issueWithAccessToken = 401,

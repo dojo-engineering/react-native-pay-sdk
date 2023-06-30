@@ -11,23 +11,29 @@ import java.util.*
 
 
 object DojoPay {
+  private const val EXPIRED_RESULT_CODE: Int = 40;
+
   var activePromise: Promise? = null
   var UIHandler: DojoPaymentFlowHandler? = null
-  var timer: Timer? = null
+  private var timer: Timer? = null
+  private var hasExpired: Boolean = false
 
   @JvmStatic
   fun init(activity: ComponentActivity) {
     UIHandler = DojoSDKDropInUI.createUIPaymentHandler(activity) { result ->
       timer?.cancel()
       activePromise?.let { promise ->
-        promise.resolve(result.code)
+        val code = if (hasExpired) EXPIRED_RESULT_CODE else result.code
+        promise.resolve(code)
       }
       activePromise = null
+      hasExpired = false
     }
   }
 
   fun startExpiryTimer(expiryTime: String, context: ReactApplicationContext) {
     timer = Timer()
+    hasExpired = false
     val dateToRun = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX").parse(expiryTime)
     timer?.schedule(object : TimerTask() {
       override fun run() {
@@ -35,6 +41,7 @@ object DojoPay {
         context.currentActivity?.runOnUiThread {
           run() {
             if (context.currentActivity != null) {
+              hasExpired = true
               val intent = Intent(context, context.currentActivity?.javaClass)
               intent.action = Intent.ACTION_MAIN
               intent.addCategory(Intent.CATEGORY_LAUNCHER)
