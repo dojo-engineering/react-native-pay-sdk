@@ -58,7 +58,7 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
         theme = [DojoThemeSettings getLightTheme];
     }
     
-    if (showBranding.boolValue == false) {
+    if (showBranding != nil && showBranding.boolValue == false) {
         [theme setShowBranding:@false];
     }
     
