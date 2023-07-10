@@ -26,7 +26,7 @@ pod 'dojo-ios-sdk-drop-in-ui', :git => 'git@github.com:dojo-engineering/dojo-ios
 Add the native dependencies to your apps `build.gradle`
 
 ```groovy
-implementation("tech.dojo.pay:uisdk:1.2.0")
+implementation("tech.dojo.pay:uisdk:1.2.1")
 implementation("tech.dojo.pay:sdk:1.5.0")
 ```
 
