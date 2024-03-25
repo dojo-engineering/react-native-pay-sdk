@@ -102,7 +102,7 @@ export type PaymentDetails = {
    */
   backdropViewColor?: string;
 
-   /**
+  /**
    * Background dim colour alpha, default is 0.3
    * Use backdropViewColor to set colour, default is #000000
    */
