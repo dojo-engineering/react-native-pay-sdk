@@ -15,6 +15,7 @@ export enum ResultCode {
   noAccessTokenSupplied = 404,
   internalServerError = 500,
   sdkInternalError = 7770,
+  userClosedWithoutPaying = 7780,
 }
 
 export type PaymentDetails = {
@@ -89,6 +90,23 @@ export type PaymentDetails = {
    * the user will not be allowed to complete the payment
    */
   mustCompleteBy?: string;
+
+  /**
+   * Additional legal text to show on the first checkout page
+   */
+  additionalLegalText?: string;
+
+  /**
+   * Background dim colour in hex, default is #000000
+   * Use backdropViewAlpha to set alpha, default is 0.3
+   */
+  backdropViewColor?: string;
+
+   /**
+   * Background dim colour alpha, default is 0.3
+   * Use backdropViewColor to set colour, default is #000000
+   */
+  backdropViewAlpha?: number;
 };
 
 export interface Spec extends TurboModule {

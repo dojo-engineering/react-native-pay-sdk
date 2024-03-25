@@ -29,6 +29,10 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
     NSNumber *isProduction = details[@"isProduction"];
     NSNumber *showBranding = details[@"showBranding"];
     NSString *mustCompleteBy = details[@"mustCompleteBy"];
+    NSString *additionalLegalText = details[@"additionalLegalText"];
+
+    NSString *backdropViewColor = details[@"backdropViewColor"];
+    NSNumber *backdropViewAlpha = details[@"backdropViewAlpha"];
     
     DojoUIApplePayConfig *applePayConfig = nil;
     if (applePayMerchantId != nil) {
@@ -57,6 +61,18 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
     
     if (showBranding != nil && showBranding.boolValue == false) {
         [theme setShowBranding:@false];
+    }
+
+    if (additionalLegalText != nil && [additionalLegalText length] > 0) {
+        [theme setAdditionalLegalText: additionalLegalText];
+    }
+
+    if (backdropViewColor != nil && [backdropViewColor length] > 0) {
+        [theme setBackdropViewColor: [DojoReactNativePaySdk colorFromHexString: backdropViewColor]];
+    }
+
+    if (backdropViewAlpha != nil && backdropViewAlpha > 0) {
+        [theme setBackdropViewAlpha: backdropViewAlpha];
     }
     
     if (mustCompleteBy != nil) {
@@ -103,6 +119,9 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
     NSNumber *isProduction = details[@"isProduction"];
     NSNumber *showBranding = details[@"showBranding"];
     NSString *mustCompleteBy = details[@"mustCompleteBy"];
+
+    NSString *backdropViewColor = details[@"backdropViewColor"];
+    NSNumber *backdropViewAlpha = details[@"backdropViewAlpha"];
     
     
     DojoSDKDebugConfig *debugConfig;
@@ -126,6 +145,10 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
     
     if (showBranding != nil && showBranding.boolValue == false) {
         [theme setShowBranding:@false];
+    }
+
+     if (backdropViewColor != nil && [backdropViewColor length] > 0) {
+        [theme setBackdropViewColor: [DojoReactNativePaySdk colorFromHexString: backdropViewColor]];
     }
     
     if (mustCompleteBy != nil) {
@@ -154,6 +177,14 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
         }
         resolve(@(result));
     }];
+}
+
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
 // Don't compile this code when we build for the old architecture.
