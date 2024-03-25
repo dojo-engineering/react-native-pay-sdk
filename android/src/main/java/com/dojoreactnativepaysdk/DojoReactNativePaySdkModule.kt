@@ -9,6 +9,8 @@ import tech.dojo.pay.uisdk.DojoSDKDropInUI
 import tech.dojo.pay.uisdk.entities.DojoPaymentFlowParams
 import tech.dojo.pay.uisdk.entities.DojoPaymentType
 import tech.dojo.pay.uisdk.entities.DojoThemeSettings
+import tech.dojo.pay.uisdk.entities.LightColorPalette
+import tech.dojo.pay.uisdk.entities.DarkColorPalette
 
 class DojoReactNativePaySdkModule internal constructor(context: ReactApplicationContext) :
   DojoReactNativePaySdkSpec(context) {
@@ -29,6 +31,10 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     val showBranding =
       if (details.hasKey(SHOW_BRANDING)) details.getBoolean(SHOW_BRANDING) else true
     val mustCompleteBy = details.getString(MUST_COMPLETE_BY)
+    val additionalLegalText = details.getString(ADDITIONAL_LEGAL_TEXT)
+    var backdropViewColor = details.getString(BACKDROP_VIEW_COLOR)
+    var backdropViewAlpha = 
+    if (details.hasKey(BACKDROP_VIEW_ALPHA)) details.getDouble(BACKDROP_VIEW_ALPHA) else null
 
     val gPayConfig = if (
       gPayMerchantId !== null &&
@@ -62,7 +68,31 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     ) else null
 
     DojoSDKDropInUI.dojoSDKDebugConfig = debugConfig
-    DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(forceLightMode = forceLightMode, showBranding = showBranding)
+    var lightColorPalette = LightColorPalette()
+    var darkColorPalette = DarkColorPalette()
+    var backdropViewAlphaFloat = 0f
+    if (!backdropViewColor.isNullOrEmpty()) {
+      // Android theme colour is in format #00 00 00 00 where first 00 is alpha
+      // But we take as a parameter simple HEX so a small modification is needed
+      backdropViewColor = backdropViewColor.removePrefix("#")
+      backdropViewColor = "#FF$backdropViewColor"
+    } else {
+      backdropViewColor = lightColorPalette.backdropViewColor // same as for darkColorPalette
+    }
+
+    if (backdropViewAlpha !== null && backdropViewAlpha > 0) {
+      backdropViewAlphaFloat = backdropViewAlpha.toFloat()
+    } else {
+      backdropViewAlphaFloat = lightColorPalette.backdropViewAlpha // same as for darkColorPalette
+    }
+
+    lightColorPalette = LightColorPalette(backdropViewColor = backdropViewColor, backdropViewAlpha = backdropViewAlphaFloat)
+    darkColorPalette = DarkColorPalette(backdropViewColor = backdropViewColor, backdropViewAlpha = backdropViewAlphaFloat)    
+    DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(lightColorPalette = lightColorPalette, darkColorPalette = darkColorPalette, forceLightMode = forceLightMode, showBranding = showBranding)
+
+    if (!additionalLegalText.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.additionalLegalText = additionalLegalText
+    }
 
     if (mustCompleteBy != null) {
       DojoPay.startExpiryTimer(mustCompleteBy, reactApplicationContext)
@@ -87,6 +117,9 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     val showBranding =
       if (details.hasKey(SHOW_BRANDING)) details.getBoolean(SHOW_BRANDING) else true
     val mustCompleteBy = details.getString(MUST_COMPLETE_BY)
+    var backdropViewColor = details.getString(BACKDROP_VIEW_COLOR)
+    var backdropViewAlpha = 
+    if (details.hasKey(BACKDROP_VIEW_ALPHA)) details.getDouble(BACKDROP_VIEW_ALPHA) else null
 
     if (intentId.isNullOrEmpty()) {
       promise.resolve(DojoPaymentResult.INVALID_REQUEST.code)
@@ -109,9 +142,30 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
       true
     ) else null
 
-    DojoSDKDropInUI.dojoSDKDebugConfig = debugConfig
-    DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(forceLightMode = forceLightMode, showBranding = showBranding)
 
+    DojoSDKDropInUI.dojoSDKDebugConfig = debugConfig
+    var lightColorPalette = LightColorPalette()
+    var darkColorPalette = DarkColorPalette()
+    var backdropViewAlphaFloat = 0f
+    if (!backdropViewColor.isNullOrEmpty()) {
+      // Android theme colour is in format #00 00 00 00 where first 00 is alpha
+      // But we take as a parameter simple HEX so a small modification is needed
+      backdropViewColor = backdropViewColor.removePrefix("#")
+      backdropViewColor = "#FF$backdropViewColor"
+    } else {
+      backdropViewColor = lightColorPalette.backdropViewColor // same as for darkColorPalette
+    }
+
+    if (backdropViewAlpha !== null && backdropViewAlpha > 0) {
+      backdropViewAlphaFloat = backdropViewAlpha.toFloat()
+    } else {
+      backdropViewAlphaFloat = lightColorPalette.backdropViewAlpha // same as for darkColorPalette
+    }
+
+    lightColorPalette = LightColorPalette(backdropViewColor = backdropViewColor, backdropViewAlpha = backdropViewAlphaFloat)
+    darkColorPalette = DarkColorPalette(backdropViewColor = backdropViewColor, backdropViewAlpha = backdropViewAlphaFloat)    
+    DojoSDKDropInUI.dojoThemeSettings = DojoThemeSettings(lightColorPalette = lightColorPalette, darkColorPalette = darkColorPalette, forceLightMode = forceLightMode, showBranding = showBranding)
+    
     if (mustCompleteBy != null) {
       DojoPay.startExpiryTimer(mustCompleteBy, reactApplicationContext)
     }
@@ -137,5 +191,8 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     const val GOOGLE_PAY_MERCHANT_NAME = "gPayMerchantName"
     const val SHOW_BRANDING = "showBranding"
     const val MUST_COMPLETE_BY = "mustCompleteBy"
+    const val ADDITIONAL_LEGAL_TEXT = "additionalLegalText"
+    const val BACKDROP_VIEW_COLOR = "backdropViewColor"
+    const val BACKDROP_VIEW_ALPHA = "backdropViewAlpha"
   }
 }
