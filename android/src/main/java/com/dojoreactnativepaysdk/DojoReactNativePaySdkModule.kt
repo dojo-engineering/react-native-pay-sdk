@@ -31,10 +31,19 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     val showBranding =
       if (details.hasKey(SHOW_BRANDING)) details.getBoolean(SHOW_BRANDING) else true
     val mustCompleteBy = details.getString(MUST_COMPLETE_BY)
-    val additionalLegalText = details.getString(ADDITIONAL_LEGAL_TEXT)
     var backdropViewColor = details.getString(BACKDROP_VIEW_COLOR)
     var backdropViewAlpha = 
     if (details.hasKey(BACKDROP_VIEW_ALPHA)) details.getDouble(BACKDROP_VIEW_ALPHA) else null
+
+    val additionalLegalText = details.getString(ADDITIONAL_LEGAL_TEXT)
+    val customCardDetailsNavigationTitle = details.getString(CUSTOM_CARD_DETAILS_NAVIGATION_TITLE)
+    val customResultScreenTitleSuccess = details.getString(CUSTOM_RESULT_TITLE_SCREEN_SUCCESS)
+    val customResultScreenTitleFail = details.getString(CUSTOM_RESULT_TITLE_FAIL)
+    val customResultScreenOrderIdText = details.getString(CUSTOM_RESULT_ORDER_ID_TEXT)
+    val customResultScreenMainTextSuccess = details.getString(CUSTOM_RESULT_MAIN_TEXT_SUCCESS)
+    val customResultScreenMainTextFail = details.getString(CUSTOM_RESULT_MAIN_TEXT_FAIL)
+    val customResultScreenAdditionalTextSuccess = details.getString(CUSTOM_RESULT_ADDITIONAL_TEXT_SUCCESS)
+    val customResultScreenAdditionalTextFail = details.getString(CUSTOM_RESULT_ADDITIONAL_TEXT_FAIL)
 
     val gPayConfig = if (
       gPayMerchantId !== null &&
@@ -92,6 +101,38 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
 
     if (!additionalLegalText.isNullOrEmpty()) {
       DojoSDKDropInUI.dojoThemeSettings?.additionalLegalText = additionalLegalText
+    }
+
+    if (!customCardDetailsNavigationTitle.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customCardDetailsNavigationTitle = customCardDetailsNavigationTitle
+    }
+
+    if (!customResultScreenTitleSuccess.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customResultScreenTitleSuccess = customResultScreenTitleSuccess
+    }
+
+    if (!customResultScreenTitleFail.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customResultScreenTitleFail = customResultScreenTitleFail
+    }
+
+    if (!customResultScreenOrderIdText.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customResultScreenOrderIdText = customResultScreenOrderIdText
+    }
+
+    if (!customResultScreenMainTextSuccess.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customResultScreenMainTextSuccess = customResultScreenMainTextSuccess
+    }
+
+    if (!customResultScreenMainTextFail.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customResultScreenMainTextFail = customResultScreenMainTextFail
+    }
+
+    if (!customResultScreenAdditionalTextSuccess.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customResultScreenAdditionalTextSuccess = customResultScreenAdditionalTextSuccess
+    }
+
+    if (!customResultScreenAdditionalTextFail.isNullOrEmpty()) {
+      DojoSDKDropInUI.dojoThemeSettings?.customResultScreenAdditionalTextFail = customResultScreenAdditionalTextFail
     }
 
     if (mustCompleteBy != null) {
@@ -194,5 +235,15 @@ class DojoReactNativePaySdkModule internal constructor(context: ReactApplication
     const val ADDITIONAL_LEGAL_TEXT = "additionalLegalText"
     const val BACKDROP_VIEW_COLOR = "backdropViewColor"
     const val BACKDROP_VIEW_ALPHA = "backdropViewAlpha"
+
+
+    const val CUSTOM_CARD_DETAILS_NAVIGATION_TITLE = "customCardDetailsNavigationTitle"
+    const val CUSTOM_RESULT_TITLE_SCREEN_SUCCESS = "customResultScreenTitleSuccess"
+    const val CUSTOM_RESULT_TITLE_FAIL = "customResultScreenTitleFail"
+    const val CUSTOM_RESULT_ORDER_ID_TEXT = "customResultScreenOrderIdText"
+    const val CUSTOM_RESULT_MAIN_TEXT_SUCCESS = "customResultScreenMainTextSuccess"
+    const val CUSTOM_RESULT_MAIN_TEXT_FAIL = "customResultScreenMainTextFail"
+    const val CUSTOM_RESULT_ADDITIONAL_TEXT_SUCCESS = "customResultScreenAdditionalTextSuccess"
+    const val CUSTOM_RESULT_ADDITIONAL_TEXT_FAIL = "customResultScreenAdditionalTextFail"
   }
 }
