@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.dependency "React-Core"
 
   # Dojo iOS SDK Dependencies
-  s.dependency 'dojo-ios-sdk-drop-in-ui', '1.4.3'
+  s.dependency 'dojo-ios-sdk-drop-in-ui', '1.4.4'
   s.dependency 'dojo-ios-sdk', '1.4.2'
 
   # Don't install the dependencies when we run `pod install` in the old architecture.

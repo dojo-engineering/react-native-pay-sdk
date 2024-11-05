@@ -96,6 +96,18 @@ export type PaymentDetails = {
    */
   additionalLegalText?: string;
 
+  /** 
+   * Additional cutomisation for titles
+   */
+  customCardDetailsNavigationTitle?: string;
+  customResultScreenTitleSuccess?: string;
+  customResultScreenTitleFail?: string;
+  customResultScreenOrderIdText?: string;
+  customResultScreenMainTextSuccess?: string;
+  customResultScreenMainTextFail?: string;
+  customResultScreenAdditionalTextSuccess?: string;
+  customResultScreenAdditionalTextFail?: string;
+
   /**
    * Background dim colour in hex, default is #000000
    * Use backdropViewAlpha to set alpha, default is 0.3
