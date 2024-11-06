@@ -96,7 +96,7 @@ export type PaymentDetails = {
    */
   additionalLegalText?: string;
 
-  /** 
+  /**
    * Additional cutomisation for titles
    */
   customCardDetailsNavigationTitle?: string;
