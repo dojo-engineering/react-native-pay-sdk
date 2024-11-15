@@ -1,7 +1,7 @@
 #import "DojoReactNativePaySdk.h"
 #import <React/RCTUtils.h>
-#import "dojo_ios_sdk/dojo_ios_sdk-Swift.h"
-#import "dojo_ios_sdk_drop_in_ui/dojo_ios_sdk_drop_in_ui-Swift.h"
+@import dojo_ios_sdk;
+@import dojo_ios_sdk_drop_in_ui;
 
 @implementation DojoReactNativePaySdk
 

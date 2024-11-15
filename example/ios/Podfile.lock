@@ -548,7 +548,7 @@ SPEC CHECKSUMS:
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   dojo-ios-sdk: 8518ed98a2d2e26830ecd50455697e87a68d66c0
   dojo-ios-sdk-drop-in-ui: a44d1c87b2da9b1fe6bb2f5b3b8b7f184ac4f0f6
-  dojo-react-native-pay-sdk: fbec23229128123a687565596b0b9021b59efc86
+  dojo-react-native-pay-sdk: 49b9609d2ed0c5e5b7436f07ac009c127ff0545a
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: f637f31eacba90d4fdeff3fa41608b8f361c173b
   FBReactNativeSpec: 0d9a4f4de7ab614c49e98c00aedfd3bfbda33d59

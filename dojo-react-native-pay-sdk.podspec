@@ -16,6 +16,8 @@ Pod::Spec.new do |s|
 
   s.source_files = "ios/**/*.{h,m,mm}"
 
+  s.compiler_flags = '-fmodules -fcxx-modules' # Enable C++ compiler for modules
+
   s.dependency "React-Core"
 
   # Dojo iOS SDK Dependencies
