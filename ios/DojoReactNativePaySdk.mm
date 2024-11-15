@@ -4,6 +4,7 @@
 @import dojo_ios_sdk_drop_in_ui;
 
 @implementation DojoReactNativePaySdk
+
 RCT_EXPORT_MODULE()
 
 - (dispatch_queue_t)methodQueue
@@ -17,11 +18,11 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
                  : (NSDictionary*)details resolve
                  : (RCTPromiseResolveBlock)resolve reject
                  : (RCTPromiseRejectBlock)reject) {
-    
+
     DojoSDKDropInUI *dojoUI = [[DojoSDKDropInUI alloc] init];
     UIViewController *vc = RCTPresentedViewController();
     NSTimer *expiryTimer = nil;
-    
+
     NSString *applePayMerchantId = details[@"applePayMerchantId"];
     NSString *intentId = details[@"intentId"];
     NSString *customerSecret = details[@"customerSecret"];
@@ -29,7 +30,6 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
     NSNumber *isProduction = details[@"isProduction"];
     NSNumber *showBranding = details[@"showBranding"];
     NSString *mustCompleteBy = details[@"mustCompleteBy"];
-
     NSString *additionalLegalText = details[@"additionalLegalText"];
 
     NSString *customCardDetailsNavigationTitle = details[@"customCardDetailsNavigationTitle"];
@@ -43,13 +43,13 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
 
     NSString *backdropViewColor = details[@"backdropViewColor"];
     NSNumber *backdropViewAlpha = details[@"backdropViewAlpha"];
-    
+
     DojoUIApplePayConfig *applePayConfig = nil;
     if (applePayMerchantId != nil) {
         applePayConfig = [[DojoUIApplePayConfig alloc]
                           initWithMerchantIdentifier:applePayMerchantId];
     }
-    
+
     DojoSDKDebugConfig *debugConfig;
     if (isProduction != nil && isProduction.boolValue == false) {
         DojoSDKURLConfig *urlConfig = [[DojoSDKURLConfig alloc]
@@ -60,15 +60,15 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
                        isSandboxIntent:true
                        isSandboxWallet:true];
     }
-    
-    
+
+
     DojoThemeSettings *theme;
     if (darkTheme != nil && darkTheme.boolValue == true) {
         theme = [DojoThemeSettings getDarkTheme];
     } else {
         theme = [DojoThemeSettings getLightTheme];
     }
-    
+
     if (showBranding != nil && showBranding.boolValue == false) {
         [theme setShowBranding:@false];
     }
@@ -113,15 +113,15 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
         [theme setBackdropViewColor: [DojoReactNativePaySdk colorFromHexString: backdropViewColor]];
     }
 
-    if (backdropViewAlpha != nil && backdropViewAlpha > 0) {
-        [theme setBackdropViewAlpha: backdropViewAlpha];
+    if (backdropViewAlpha != nil && [backdropViewAlpha doubleValue] > 0.0) {
+      [theme setBackdropViewAlpha: [NSDecimalNumber decimalNumberWithDecimal:[backdropViewAlpha decimalValue]]];
     }
-    
+
     if (mustCompleteBy != nil) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
         NSDate *date = [dateFormatter dateFromString:mustCompleteBy];
-        
+
         expiryTimer = [[NSTimer alloc] initWithFireDate:date interval:0 repeats:false block:^(NSTimer * _Nonnull timer) {
             if (expiryTimer != nil) {
                 [expiryTimer invalidate];
@@ -129,10 +129,10 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
             [vc dismissViewControllerAnimated:YES completion:nil];
             resolve(@(EXPIRED_RESULT_CODE));
         }];
-        
+
         [[NSRunLoop mainRunLoop] addTimer: expiryTimer forMode:NSDefaultRunLoopMode];
     }
-    
+
     [dojoUI startPaymentFlowWithPaymentIntentId:intentId
                                      controller:vc
                                  customerSecret:customerSecret
@@ -151,11 +151,11 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
                  : (NSDictionary*)details resolve
                  : (RCTPromiseResolveBlock)resolve reject
                  : (RCTPromiseRejectBlock)reject) {
-    
+
     DojoSDKDropInUI *dojoUI = [[DojoSDKDropInUI alloc] init];
     UIViewController *vc = RCTPresentedViewController();
     NSTimer *expiryTimer = nil;
-    
+
     NSString *intentId = details[@"intentId"];
     NSNumber *darkTheme = details[@"darkTheme"];
     NSNumber *isProduction = details[@"isProduction"];
@@ -164,8 +164,8 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
 
     NSString *backdropViewColor = details[@"backdropViewColor"];
     NSNumber *backdropViewAlpha = details[@"backdropViewAlpha"];
-    
-    
+
+
     DojoSDKDebugConfig *debugConfig;
     if (isProduction != nil && isProduction.boolValue == false) {
         DojoSDKURLConfig *urlConfig = [[DojoSDKURLConfig alloc]
@@ -176,15 +176,15 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
                        isSandboxIntent:true
                        isSandboxWallet:true];
     }
-    
-    
+
+
     DojoThemeSettings *theme;
     if (darkTheme != nil && darkTheme.boolValue == true) {
         theme = [DojoThemeSettings getDarkTheme];
     } else {
         theme = [DojoThemeSettings getLightTheme];
     }
-    
+
     if (showBranding != nil && showBranding.boolValue == false) {
         [theme setShowBranding:@false];
     }
@@ -192,12 +192,12 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
      if (backdropViewColor != nil && [backdropViewColor length] > 0) {
         [theme setBackdropViewColor: [DojoReactNativePaySdk colorFromHexString: backdropViewColor]];
     }
-    
+
     if (mustCompleteBy != nil) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
         NSDate *date = [dateFormatter dateFromString:mustCompleteBy];
-        
+
         expiryTimer = [[NSTimer alloc] initWithFireDate:date interval:0 repeats:false block:^(NSTimer * _Nonnull timer) {
             if (expiryTimer != nil) {
                 [expiryTimer invalidate];
@@ -205,10 +205,10 @@ RCT_REMAP_METHOD(startSetupFlow, startSetupFlow
             [vc dismissViewControllerAnimated:YES completion:nil];
             resolve(@(EXPIRED_RESULT_CODE));
         }];
-        
+
         [[NSRunLoop mainRunLoop] addTimer: expiryTimer forMode:NSDefaultRunLoopMode];
     }
-    
+
     [dojoUI startSetupFlowWithSetupIntentId:intentId
                                  controller:vc
                               themeSettings:theme
