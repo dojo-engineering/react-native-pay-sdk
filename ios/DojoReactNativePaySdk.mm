@@ -32,6 +32,15 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
     NSString *mustCompleteBy = details[@"mustCompleteBy"];
     NSString *additionalLegalText = details[@"additionalLegalText"];
 
+    NSString *customCardDetailsNavigationTitle = details[@"customCardDetailsNavigationTitle"];
+    NSString *customResultScreenTitleSuccess = details[@"customResultScreenTitleSuccess"];
+    NSString *customResultScreenTitleFail = details[@"customResultScreenTitleFail"];
+    NSString *customResultScreenOrderIdText = details[@"customResultScreenOrderIdText"];
+    NSString *customResultScreenMainTextSuccess = details[@"customResultScreenMainTextSuccess"];
+    NSString *customResultScreenMainTextFail = details[@"customResultScreenMainTextFail"];
+    NSString *customResultScreenAdditionalTextSuccess = details[@"customResultScreenAdditionalTextSuccess"];
+    NSString *customResultScreenAdditionalTextFail = details[@"customResultScreenAdditionalTextFail"];
+
     NSString *backdropViewColor = details[@"backdropViewColor"];
     NSNumber *backdropViewAlpha = details[@"backdropViewAlpha"];
 
@@ -66,6 +75,38 @@ RCT_REMAP_METHOD(startPaymentFlow, startPaymentFlow
 
     if (additionalLegalText != nil && [additionalLegalText length] > 0) {
         [theme setAdditionalLegalText: additionalLegalText];
+    }
+
+    if (customCardDetailsNavigationTitle != nil && [customCardDetailsNavigationTitle length] > 0) {
+        [theme setCustomCardDetailsNavigationTitle: customCardDetailsNavigationTitle];
+    }
+
+    if (customResultScreenTitleSuccess != nil && [customResultScreenTitleSuccess length] > 0) {
+        [theme setCustomResultScreenTitleSuccess: customResultScreenTitleSuccess];
+    }
+
+    if (customResultScreenTitleFail != nil && [customResultScreenTitleFail length] > 0) {
+        [theme setCustomResultScreenTitleFail: customResultScreenTitleFail];
+    }
+
+    if (customResultScreenOrderIdText != nil && [customResultScreenOrderIdText length] > 0) {
+        [theme setCustomResultScreenOrderIdText: customResultScreenOrderIdText];
+    }
+
+    if (customResultScreenMainTextSuccess != nil && [customResultScreenMainTextSuccess length] > 0) {
+        [theme setCustomResultScreenMainTextSuccess: customResultScreenMainTextSuccess];
+    }
+
+    if (customResultScreenMainTextFail != nil && [customResultScreenMainTextFail length] > 0) {
+        [theme setCustomResultScreenMainTextFail: customResultScreenMainTextFail];
+    }
+
+    if (customResultScreenAdditionalTextSuccess != nil && [customResultScreenAdditionalTextSuccess length] > 0) {
+        [theme setCustomResultScreenAdditionalTextSuccess: customResultScreenAdditionalTextSuccess];
+    }
+
+    if (customResultScreenAdditionalTextFail != nil && [customResultScreenAdditionalTextFail length] > 0) {
+        [theme setCustomResultScreenAdditionalTextFail: customResultScreenAdditionalTextFail];
     }
 
     if (backdropViewColor != nil && [backdropViewColor length] > 0) {
