@@ -1,11 +1,11 @@
 PODS:
   - boost (1.76.0)
-  - dojo-ios-sdk (1.4.2)
-  - dojo-ios-sdk-drop-in-ui (1.4.4):
-    - dojo-ios-sdk (= 1.4.2)
-  - dojo-react-native-pay-sdk (0.15.0):
-    - dojo-ios-sdk (= 1.4.2)
-    - dojo-ios-sdk-drop-in-ui (= 1.4.4)
+  - dojo-ios-sdk (1.4.3)
+  - dojo-ios-sdk-drop-in-ui (1.4.5):
+    - dojo-ios-sdk (= 1.4.3)
+  - dojo-react-native-pay-sdk (0.16.0):
+    - dojo-ios-sdk (= 1.4.3)
+    - dojo-ios-sdk-drop-in-ui (= 1.4.5)
     - React-Core
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.71.8)
@@ -399,8 +399,8 @@ PODS:
 
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
-  - "dojo-ios-sdk (from `git@github.com:Dojo-Engineering/dojo-ios-sdk.git`, tag `1.4.2`)"
-  - "dojo-ios-sdk-drop-in-ui (from `git@github.com:dojo-engineering/dojo-ios-sdk-drop-in-ui.git`, tag `1.4.4`)"
+  - "dojo-ios-sdk (from `git@github.com:Dojo-Engineering/dojo-ios-sdk.git`, tag `1.4.3`)"
+  - "dojo-ios-sdk-drop-in-ui (from `git@github.com:dojo-engineering/dojo-ios-sdk-drop-in-ui.git`, tag `1.4.5`)"
   - dojo-react-native-pay-sdk (from `../..`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
@@ -453,10 +453,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   dojo-ios-sdk:
     :git: "git@github.com:Dojo-Engineering/dojo-ios-sdk.git"
-    :tag: 1.4.2
+    :tag: 1.4.3
   dojo-ios-sdk-drop-in-ui:
     :git: "git@github.com:dojo-engineering/dojo-ios-sdk-drop-in-ui.git"
-    :tag: 1.4.4
+    :tag: 1.4.5
   dojo-react-native-pay-sdk:
     :path: "../.."
   DoubleConversion:
@@ -539,16 +539,16 @@ EXTERNAL SOURCES:
 CHECKOUT OPTIONS:
   dojo-ios-sdk:
     :git: "git@github.com:Dojo-Engineering/dojo-ios-sdk.git"
-    :tag: 1.4.2
+    :tag: 1.4.3
   dojo-ios-sdk-drop-in-ui:
     :git: "git@github.com:dojo-engineering/dojo-ios-sdk-drop-in-ui.git"
-    :tag: 1.4.4
+    :tag: 1.4.5
 
 SPEC CHECKSUMS:
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
-  dojo-ios-sdk: 8518ed98a2d2e26830ecd50455697e87a68d66c0
-  dojo-ios-sdk-drop-in-ui: a44d1c87b2da9b1fe6bb2f5b3b8b7f184ac4f0f6
-  dojo-react-native-pay-sdk: fbec23229128123a687565596b0b9021b59efc86
+  dojo-ios-sdk: cc855ff5b4e0edc6c6bffc97e830e6bccc2b2a0e
+  dojo-ios-sdk-drop-in-ui: d9d8678ca3cd8a075f9c4eef8159728905bae052
+  dojo-react-native-pay-sdk: b19fcdb3a0dbe9ab4364907687cc96317e20caf3
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: f637f31eacba90d4fdeff3fa41608b8f361c173b
   FBReactNativeSpec: 0d9a4f4de7ab614c49e98c00aedfd3bfbda33d59
@@ -590,6 +590,6 @@ SPEC CHECKSUMS:
   RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
   Yoga: 065f0b74dba4832d6e328238de46eb72c5de9556
 
-PODFILE CHECKSUM: b049ff1099e155bad0451cfeaa0c87a68fbd98ae
+PODFILE CHECKSUM: c708f0af91c762b252165522766f09e3e88558ac
 
 COCOAPODS: 1.15.2
