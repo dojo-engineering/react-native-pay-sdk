@@ -16,8 +16,6 @@ Pod::Spec.new do |s|
 
   s.source_files = "ios/**/*.{h,m,mm}"
 
-
-
   # Dojo iOS SDK Dependencies
   s.dependency 'dojo-ios-sdk-drop-in-ui', '1.4.4'
   s.dependency 'dojo-ios-sdk', '1.4.2'
