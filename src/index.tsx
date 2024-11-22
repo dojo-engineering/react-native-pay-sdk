@@ -1,5 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
-import { PaymentDetails, ResultCode } from './NativeDojoReactNativePaySdk';
+import { type PaymentDetails, ResultCode } from './NativeDojoReactNativePaySdk';
 
 const LINKING_ERROR =
   `The package '@dojo-engineering/react-native-pay-sdk' doesn't seem to be linked. Make sure: \n\n` +
@@ -33,4 +33,4 @@ export function startSetupFlow(details: PaymentDetails): Promise<ResultCode> {
   return DojoReactNativePaySdk.startSetupFlow(details);
 }
 
-export { PaymentDetails, ResultCode };
+export { type PaymentDetails, ResultCode };

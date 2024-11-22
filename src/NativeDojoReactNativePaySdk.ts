@@ -1,4 +1,4 @@
-import { TurboModuleRegistry, TurboModule } from 'react-native';
+import { TurboModuleRegistry, type TurboModule } from 'react-native';
 
 export enum ResultCode {
   successful = 0,
