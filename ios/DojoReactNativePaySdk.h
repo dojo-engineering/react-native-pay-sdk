@@ -1,3 +1,4 @@
+#import "DojoReactNativePaySdkConfig.h"
 
 #ifdef RCT_NEW_ARCH_ENABLED
 #import "RNDojoReactNativePaySdkSpec.h"
@@ -10,3 +11,6 @@
 #endif
 
 @end
+
+
+

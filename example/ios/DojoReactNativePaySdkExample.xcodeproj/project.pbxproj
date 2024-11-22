@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* DojoReactNativePaySdkExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DojoReactNativePaySdkExampleTests.m */; };
-		12923FCE652CF7C8FE9583E4 /* libPods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1848206F45043DD0497B5AB /* libPods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.a */; };
+		0C520103E241CF70060EF1B7 /* Pods_DojoReactNativePaySdkExample_DojoReactNativePaySdkExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F3F05FFB58D845F11E45BD /* Pods_DojoReactNativePaySdkExample_DojoReactNativePaySdkExampleTests.framework */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		33AF3B2C30B915BB7772B61A /* libPods-DojoReactNativePaySdkExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A71B5B76C3E517C9DFF4F21 /* libPods-DojoReactNativePaySdkExample.a */; };
+		4D72F03AE58129923001AC91 /* Pods_DojoReactNativePaySdkExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 252AA3508EAF936FB46876A5 /* Pods_DojoReactNativePaySdkExample.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -37,11 +37,11 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DojoReactNativePaySdkExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DojoReactNativePaySdkExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DojoReactNativePaySdkExample/main.m; sourceTree = "<group>"; };
+		252AA3508EAF936FB46876A5 /* Pods_DojoReactNativePaySdkExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DojoReactNativePaySdkExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A626E07F8A395503FCCD2A /* Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests/Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4A71B5B76C3E517C9DFF4F21 /* libPods-DojoReactNativePaySdkExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DojoReactNativePaySdkExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7018C6FD412E683B02422444 /* Pods-DojoReactNativePaySdkExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DojoReactNativePaySdkExample.release.xcconfig"; path = "Target Support Files/Pods-DojoReactNativePaySdkExample/Pods-DojoReactNativePaySdkExample.release.xcconfig"; sourceTree = "<group>"; };
+		78F3F05FFB58D845F11E45BD /* Pods_DojoReactNativePaySdkExample_DojoReactNativePaySdkExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DojoReactNativePaySdkExample_DojoReactNativePaySdkExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DojoReactNativePaySdkExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D1848206F45043DD0497B5AB /* libPods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FD9CEB3CDC244F945D1E4D34 /* Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.release.xcconfig"; path = "Target Support Files/Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests/Pods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12923FCE652CF7C8FE9583E4 /* libPods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.a in Frameworks */,
+				0C520103E241CF70060EF1B7 /* Pods_DojoReactNativePaySdkExample_DojoReactNativePaySdkExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33AF3B2C30B915BB7772B61A /* libPods-DojoReactNativePaySdkExample.a in Frameworks */,
+				4D72F03AE58129923001AC91 /* Pods_DojoReactNativePaySdkExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				4A71B5B76C3E517C9DFF4F21 /* libPods-DojoReactNativePaySdkExample.a */,
-				D1848206F45043DD0497B5AB /* libPods-DojoReactNativePaySdkExample-DojoReactNativePaySdkExampleTests.a */,
+				252AA3508EAF936FB46876A5 /* Pods_DojoReactNativePaySdkExample.framework */,
+				78F3F05FFB58D845F11E45BD /* Pods_DojoReactNativePaySdkExample_DojoReactNativePaySdkExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
