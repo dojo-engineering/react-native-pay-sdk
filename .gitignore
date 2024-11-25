@@ -73,3 +73,6 @@ lib/
 
 # Android
 credentials.properties
+
+# iOS
+.xcode.env.local

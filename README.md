@@ -19,7 +19,7 @@ Check out our [setup guide 🔧](https://docs.dojo.tech/mobile-integration/react
 
 ## Accept payments
 
-Once you've setup the Dojo React Native SDK, you can configure your iOS or Android app to start [accepting payments 💳](https://docs.dojo.tech/payments/mobile-integration/react-native/accept-payments/react-native-step-by-step-guide).
+Once you've setup the Dojo React Native SDK, you can configure your iOS or Android app to start [accepting payments 💳](https://docs.dojo.tech/mobile-integration/react-native/accept-payments/react-native-step-by-step-guide).
 
 ## Contributing
 
