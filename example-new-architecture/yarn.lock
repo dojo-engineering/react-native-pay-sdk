@@ -1616,7 +1616,7 @@
   dependencies:
     color "^4.2.3"
 
-"@react-navigation/native@^7.0.3":
+"@react-navigation/native@^7.0.4":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-7.0.4.tgz#42cfd7acb6cf8263e1f309a9c2a494e3f434cf95"
   integrity sha512-0K9AqV+qWjAzcielVClMltFr5e8bYppxM9f7GmG6R8+yUv9l60k/VEQFH5eKIyyld7u2PkWCLRKE3ghlUjMt/w==
@@ -1634,10 +1634,10 @@
   dependencies:
     nanoid "3.3.7"
 
-"@react-navigation/stack@^7.0.5":
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-7.0.6.tgz#34f9f19c4a46c4c67b8dedd4043889b93989a523"
-  integrity sha512-sU3LfE5VBCFiAXgnwHdm4hI3PKn1NfXi5B8ttTBduajIkse/RCOnrokK+1Z7CK3pmF4xyi4tGTtXJPCl62sQRA==
+"@react-navigation/stack@^7.0.7":
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-7.0.7.tgz#6b253eaf39afa84f0d8dcf78430a1dd376810702"
+  integrity sha512-AIdblOB8bngRrY0u5HP+0u5I0dFwqsdyC/iACexZYr0Twh8meol4/x/FoBUzBBU5GWVzucn9R3Ono8ovKmI5iw==
   dependencies:
     "@react-navigation/elements" "^2.1.1"
     color "^4.2.3"
