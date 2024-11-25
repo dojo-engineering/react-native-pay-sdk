@@ -48,7 +48,7 @@ NSDictionary *config;
   return !isProduction.has_value() || isProduction.value() == true;
 #else
   NSNumber *isProduction = config[@"isProduction"];
-  return isProduction != nil && isProduction.boolValue == false;
+  return isProduction == nil || isProduction.boolValue == true;
 #endif
 }
 
@@ -68,7 +68,7 @@ NSDictionary *config;
   return !darkTheme.has_value() || darkTheme.value() == true;
 #else
   NSNumber *showBranding = config[@"showBranding"];
-  return showBranding != nil && showBranding.boolValue == true;
+  return showBranding == nil || showBranding.boolValue == true;
 #endif
 }
 
