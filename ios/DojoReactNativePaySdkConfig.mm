@@ -45,7 +45,7 @@ NSDictionary *config;
 - (BOOL) isProduction {
 #ifdef RCT_NEW_ARCH_ENABLED
   std::optional<bool> isProduction = config->isProduction();
-  return isProduction.has_value() && isProduction.value() == false;
+  return !isProduction.has_value() || isProduction.value();
 #else
   NSNumber *isProduction = config[@"isProduction"];
   return isProduction != nil && isProduction.boolValue == false;
@@ -55,12 +55,7 @@ NSDictionary *config;
 - (BOOL) useDarkTheme {
 #ifdef RCT_NEW_ARCH_ENABLED
   std::optional<bool> darkTheme = config->darkTheme();
-  
-  if (darkTheme.has_value() && darkTheme.value() == true) {
-    return true;
-  }
-  
-  return false;
+  return darkTheme.has_value() && darkTheme.value() == true;
 #else
   NSNumber *darkTheme = config[@"darkTheme"];
   return darkTheme != nil && darkTheme.boolValue == true;
@@ -70,12 +65,7 @@ NSDictionary *config;
 - (BOOL) showBranding {
 #ifdef RCT_NEW_ARCH_ENABLED
   std::optional<bool> darkTheme = config->darkTheme();
-  
-  if (darkTheme.has_value() && darkTheme.value()) {
-    return true;
-  }
-  
-  return false;
+  return !darkTheme.has_value() || darkTheme.value() == true;
 #else
   NSNumber *showBranding = config[@"showBranding"];
   return showBranding != nil && showBranding.boolValue == true;
