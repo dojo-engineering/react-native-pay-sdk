@@ -15,6 +15,7 @@
     "cpp",
     "*.podspec",
     "!lib/typescript/example",
+    "!lib/typescript/example-new-architecture",
     "!ios/build",
     "!android/build",
     "!android/gradle",
