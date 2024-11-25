@@ -45,7 +45,7 @@ NSDictionary *config;
 - (BOOL) isProduction {
 #ifdef RCT_NEW_ARCH_ENABLED
   std::optional<bool> isProduction = config->isProduction();
-  return !isProduction.has_value() || isProduction.value();
+  return !isProduction.has_value() || isProduction.value() == true;
 #else
   NSNumber *isProduction = config[@"isProduction"];
   return isProduction != nil && isProduction.boolValue == false;
