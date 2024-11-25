@@ -63,7 +63,11 @@ const DojoSdk: FC<DojoSdkProps> = (props) => {
         </Text>
       </View>
       <View style={styles.rightContainer}>
-        <Button text="Settings" onPress={goToSettings} />
+        <Button
+          text="Settings"
+          onPress={goToSettings}
+          textStyle={styles.settingsButtonLabel}
+        />
       </View>
       <View style={styles.bottomContainer}>
         <View style={styles.buttonWrapper}>
@@ -110,6 +114,9 @@ const styles = StyleSheet.create({
     marginTop: 280,
     fontSize: 20,
     padding: 10,
+  },
+  settingsButtonLabel: {
+    color: 'black',
   },
   settingsLabels: {
     fontSize: 15,

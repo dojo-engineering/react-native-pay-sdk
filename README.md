@@ -14,7 +14,7 @@
 
 ## Installation
 
-Check out our [setup guide 🔧](https://docs.dojo.tech/payments/mobile-integration/react-native/setup) to get started.
+Check out our [setup guide 🔧](https://docs.dojo.tech/mobile-integration/react-native/setup) to get started.
 
 
 ## Accept payments
