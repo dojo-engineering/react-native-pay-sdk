@@ -24,6 +24,15 @@ Pod::Spec.new do |s|
 
   if ENV['RCT_NEW_ARCH_ENABLED'] != '1' then
     s.compiler_flags = '-fmodules -fcxx-modules' # Enable C++ compiler for modules in old architecture
+
+    if defined?(add_dependency) then
+      s.pod_target_xcconfig = {
+        'DEFINES_MODULE' => 'YES',
+        'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES',
+      }
+
+      add_dependency(s, "React-jsinspector", :framework_name => 'jsinspector_modern')
+    end
   end
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
