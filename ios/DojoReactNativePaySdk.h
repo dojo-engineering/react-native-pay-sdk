@@ -5,7 +5,7 @@
 
 @interface DojoReactNativePaySdk : NSObject <NativeDojoReactNativePaySdkSpec>
 #else
-#import <React/RCTBridgeModule.h>
+#import <React/RCTBridge.h>
 
 @interface DojoReactNativePaySdk : NSObject <RCTBridgeModule>
 #endif

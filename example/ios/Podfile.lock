@@ -3,9 +3,10 @@ PODS:
   - dojo-ios-sdk (1.4.3)
   - dojo-ios-sdk-drop-in-ui (1.4.5):
     - dojo-ios-sdk (= 1.4.3)
-  - dojo-react-native-pay-sdk (0.16.0):
+  - dojo-react-native-pay-sdk (0.17.0):
     - dojo-ios-sdk (= 1.4.3)
     - dojo-ios-sdk-drop-in-ui (= 1.4.5)
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.71.11)
@@ -554,7 +555,7 @@ SPEC CHECKSUMS:
   boost: 57d2868c099736d80fcd648bf211b4431e51a558
   dojo-ios-sdk: cc855ff5b4e0edc6c6bffc97e830e6bccc2b2a0e
   dojo-ios-sdk-drop-in-ui: d9d8678ca3cd8a075f9c4eef8159728905bae052
-  dojo-react-native-pay-sdk: b19fcdb3a0dbe9ab4364907687cc96317e20caf3
+  dojo-react-native-pay-sdk: 4863bf7a945bc8400adb3335966b6c9191a1f4d6
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
   FBLazyVector: c511d4cd0210f416cb5c289bd5ae6b36d909b048
   FBReactNativeSpec: a911fb22def57aef1d74215e8b6b8761d25c1c54
@@ -567,22 +568,22 @@ SPEC CHECKSUMS:
   RCTTypeSafety: a01aca2dd3b27fa422d5239252ad38e54e958750
   React: 741b4f5187e7a2137b69c88e65f940ba40600b4b
   React-callinvoker: 72ba74b2d5d690c497631191ae6eeca0c043d9cf
-  React-Codegen: 8a7cda1633e4940de8a710f6bf5cae5dd673546e
-  React-Core: 72bb19702c465b6451a40501a2879532bec9acee
-  React-CoreModules: ffd19b082fc36b9b463fedf30955138b5426c053
-  React-cxxreact: 8b3dd87e3b8ea96dd4ad5c7bac8f31f1cc3da97f
-  React-hermes: be95942c3f47fc032da1387360413f00dae0ea68
-  React-jsi: 9978e2a64c2a4371b40e109f4ef30a33deaa9bcb
-  React-jsiexecutor: 18b5b33c5f2687a784a61bc8176611b73524ae77
+  React-Codegen: 1cfa89673eb4d2b4fccb8b5a8899535a59046758
+  React-Core: 4ada12998171685e541f0588a137931215ce8e27
+  React-CoreModules: 9d67a88b2503741807ae822183bba10218c94c72
+  React-cxxreact: cb0ba55bca4208895500b961e574ea7d2f4d77c2
+  React-hermes: 7575800cdea8e61034ff436feb7193247ce4a685
+  React-jsi: 3d54f64ce320faa34dd0cda22cd8f4e24176cb54
+  React-jsiexecutor: 9625ce2acd947cca7c719d4be84c1a1d2c903c2c
   React-jsinspector: b6ed4cb3ffa27a041cd440300503dc512b761450
-  React-logger: 186dd536128ae5924bc38ed70932c00aa740cd5b
-  react-native-safe-area-context: 9697629f7b2cda43cf52169bb7e0767d330648c2
-  react-native-segmented-control: 2221962f5073e2e809aa3691e8e410fc10b60578
+  React-logger: f56fb139828fc569c26c8fc004837e86843573c5
+  react-native-safe-area-context: 8745463257fac6150abd2281b02de640b3595ec7
+  react-native-segmented-control: b73dfcb3570a4c03dd3dda11ea31e15bd1ce0793
   React-perflogger: e706562ab7eb8eb590aa83a224d26fa13963d7f2
   React-RCTActionSheet: 57d4bd98122f557479a3359ad5dad8e109e20c5a
   React-RCTAnimation: ccf3ef00101ea74bda73a045d79a658b36728a60
-  React-RCTAppDelegate: d0c28a35c65e9a0aef287ac0dafe1b71b1ac180c
-  React-RCTBlob: 1700b92ece4357af0a49719c9638185ad2902e95
+  React-RCTAppDelegate: 89c227c4fbd9e30d936b1533af078713d21f0f33
+  React-RCTBlob: 9c0adcc16572d278d2804804d36727ab45ece1e2
   React-RCTImage: f2e4904566ccccaa4b704170fcc5ae144ca347bf
   React-RCTLinking: 52a3740e3651e30aa11dff5a6debed7395dd8169
   React-RCTNetwork: ea0976f2b3ffc7877cd7784e351dc460adf87b12
@@ -590,13 +591,13 @@ SPEC CHECKSUMS:
   React-RCTText: c9dfc6722621d56332b4f3a19ac38105e7504145
   React-RCTVibration: f09f08de63e4122deb32506e20ca4cae6e4e14c1
   React-runtimeexecutor: 4817d63dbc9d658f8dc0ec56bd9b83ce531129f0
-  ReactCommon: 864169d79e7fb2e846ad1257a2afd7ed846d6375
-  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
-  RNReanimated: 49cdb63e767bb7e743ff4c12f7d85722c0d008f2
-  RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
-  RNVectorIcons: 084d874504f21a5452744e400537eb96b45060b6
+  ReactCommon: fab6c8bad7e7ea1eacd9478bb6da3f286d03a1ae
+  RNGestureHandler: 627182485becfd74f122c83f93cce2be20c2e8c8
+  RNReanimated: 3771718d611afc03072e7b41eac6a336c879844e
+  RNScreens: 3139e3291595a8f61e09f1348b8c1f89ed3fdfd2
+  RNVectorIcons: 42c2c63b4d6e909a2b2497017e03ea04034b6722
   Yoga: f7decafdc5e8c125e6fa0da38a687e35238420fa
 
-PODFILE CHECKSUM: c708f0af91c762b252165522766f09e3e88558ac
+PODFILE CHECKSUM: 1e0e199ba267ddbfc44453578f981aafdc83c175
 
 COCOAPODS: 1.16.2
