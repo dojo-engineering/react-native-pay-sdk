@@ -87,8 +87,8 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation "tech.dojo.pay:uisdk:1.7.0"
-  implementation "tech.dojo.pay:sdk:1.8.1"
+  implementation "tech.dojo.pay:uisdk:1.6.1"
+  implementation "tech.dojo.pay:sdk:1.7.2"
 }
 
 if (isNewArchitectureEnabled()) {
