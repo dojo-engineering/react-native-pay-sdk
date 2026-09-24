@@ -1,6 +1,6 @@
 {
   "name": "@dojo-engineering/react-native-pay-sdk",
-  "version": "0.17.5",
+  "version": "0.17.7",
   "description": "React Native wrapper for Dojo Payment iOS and Android SDKs",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
