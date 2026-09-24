@@ -1,6 +1,6 @@
 {
   "name": "@dojo-engineering/react-native-pay-sdk",
-  "version": "0.17.4",
+  "version": "0.17.5",
   "description": "React Native wrapper for Dojo Payment iOS and Android SDKs",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -32,7 +32,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
-    "release": "release-it",
+    "release": "release-it --no-increment",
     "example": "yarn --cwd example",
     "example-new-architecture": "yarn --cwd example-new-architecture",
     "bootstrap": "yarn example && yarn example-new-architecture && yarn install && yarn example bundle && yarn example pods && yarn example-new-architecture bundle && yarn example-new-architecture pods",
