@@ -112,11 +112,12 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 
 We use [release-it](https://github.com/release-it/release-it) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
 
-To publish new versions, run the following:
+> [!NOTE]
+> `release-it` was integrated previously when branch-protection rules weren't in place (or were circumvented). As a quick way around that, we manually version now but still use `release-it` for publishing. This means we don't fully leverage `release-it` anymore and thus it may be suitable for replacement (e.g. `release-please`)
 
-```sh
-yarn release
-```
+To publish new versions, first raise a release PR that bumps the `package.json` version. 
+
+When that is merged to main, trigger the `release` GitHub Actions workflow.
 
 ### Scripts
 
