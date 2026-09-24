@@ -5,8 +5,8 @@ require Pod::Executable.execute_command('node', ['-p',
     {paths: [process.argv[1]]},
   )', __dir__]).strip
 
-pod 'dojo-ios-sdk', :git => 'git@github.com:Dojo-Engineering/dojo-ios-sdk.git', :tag => '1.4.3'
-pod 'dojo-ios-sdk-drop-in-ui', :git => 'git@github.com:dojo-engineering/dojo-ios-sdk-drop-in-ui.git', :tag => '1.4.5'
+pod 'dojo-ios-sdk', :git => 'https://github.com/dojo-engineering/dojo-ios-sdk.git', :tag => '1.4.5'
+pod 'dojo-ios-sdk-drop-in-ui', :git => 'https://github.com/dojo-engineering/dojo-ios-sdk-drop-in-ui.git', :tag => '1.4.6'
 
 use_frameworks! :linkage => :static
 use_modular_headers!
@@ -46,5 +46,13 @@ target 'DojoPaySdkExample' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        current_target = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET']
+        if current_target && Gem::Version.new(current_target) < Gem::Version.new('15.1')
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.1'
+        end
+      end
+    end
   end
 end
