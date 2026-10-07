@@ -55,11 +55,26 @@
   }
 
   AppDelegate *appDelegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
-  UIWindow *window = [[UIWindow alloc] initWithWindowScene:(UIWindowScene *)scene];
-  window.rootViewController = appDelegate.window.rootViewController;
-  appDelegate.window = window;
-  self.window = window;
-  [window makeKeyAndVisible];
+  if (appDelegate.window) {
+    appDelegate.window.windowScene = (UIWindowScene *)scene;
+    self.window = appDelegate.window;
+    [appDelegate.window makeKeyAndVisible];
+  }
+}
+
+// RCTAppDelegate posts RCTWindowFrameDidChangeNotification from this callback.
+- (void)windowScene:(UIWindowScene *)windowScene
+    didUpdateCoordinateSpace:(id<UICoordinateSpace>)previousCoordinateSpace
+        interfaceOrientation:(UIInterfaceOrientation)previousInterfaceOrientation
+             traitCollection:(UITraitCollection *)previousTraitCollection
+{
+  id<UIWindowSceneDelegate> appDelegate = (id<UIWindowSceneDelegate>)UIApplication.sharedApplication.delegate;
+  if ([appDelegate respondsToSelector:_cmd]) {
+    [appDelegate windowScene:windowScene
+        didUpdateCoordinateSpace:previousCoordinateSpace
+            interfaceOrientation:previousInterfaceOrientation
+                 traitCollection:previousTraitCollection];
+  }
 }
 
 @end
