@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.dependency "React-Core"
 
   # Dojo iOS SDK Dependencies
-  s.dependency 'dojo-ios-sdk-drop-in-ui', '1.4.6'
+  s.dependency 'dojo-ios-sdk-drop-in-ui', '1.4.7'
   s.dependency 'dojo-ios-sdk', '1.4.5'
 
   if ENV['RCT_NEW_ARCH_ENABLED'] != '1' then

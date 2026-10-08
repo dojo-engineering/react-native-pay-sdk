@@ -6,7 +6,7 @@ require Pod::Executable.execute_command('node', ['-p',
   )', __dir__]).strip
 
 pod 'dojo-ios-sdk', :git => 'https://github.com/dojo-engineering/dojo-ios-sdk.git', :tag => '1.4.5'
-pod 'dojo-ios-sdk-drop-in-ui', :git => 'https://github.com/dojo-engineering/dojo-ios-sdk-drop-in-ui.git', :tag => '1.4.6'
+pod 'dojo-ios-sdk-drop-in-ui', :git => 'https://github.com/dojo-engineering/dojo-ios-sdk-drop-in-ui.git', :tag => '1.4.7'
 
 use_frameworks! :linkage => :static
 use_modular_headers!
